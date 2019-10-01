@@ -1,6 +1,6 @@
 CPSC 501 - Assignment 1: Refactoring
 
-The following code base is for Assignment 1 (refactoring assignment) offered by Jonathan Hudson at the University of Calgary.
+The following code base is for Assignment 1 (refactoring assignment) offered in CPSC 501 by Jonathan Hudson at the University of Calgary.
 
 The assignment description is as follows:
 The focus of this assignment is the practical application of refactoring to some existing objectoriented code. Find or create a running program that is poorly structured and can be improved
