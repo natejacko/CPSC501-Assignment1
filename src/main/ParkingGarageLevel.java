@@ -54,34 +54,10 @@ public class ParkingGarageLevel
 		
 		for (int row = 0; row < rows.size(); row++)
 		{
-			ParkingSpot[] currentRow = rows.get(row);
-			int freeSpot = -1;
-			for (int spot = 0; spot < currentRow.length; spot++)
+			int spot;
+			if ((spot = getNextFreeSpotInRow(row, v)) != -1)
 			{
-				if (currentRow[spot].spotFreeAndCanFitVehicle(v)) 
-				{					
-					// If more than one spot, check all sequential spots
-					int checkedSpots = v.getParkingSpotsNeeded() - 1;
-					for (int moreSpots = spot + 1; moreSpots < currentRow.length && checkedSpots > 0; moreSpots++)
-					{	
-						if (currentRow[moreSpots].spotFreeAndCanFitVehicle(v))
-						{
-							checkedSpots--;
-						}
-						else
-						{
-							break;
-						}
-					}
-					if (checkedSpots == 0)
-					{
-						freeSpot = spot;
-					}
-				}
-			}
-			if (freeSpot != -1)
-			{
-				return parkVehicle(row, freeSpot, v);
+				return parkVehicle(row, spot, v);
 			}
 		}
 		
@@ -101,6 +77,43 @@ public class ParkingGarageLevel
 		}
 		freeSpots -= v.getParkingSpotsNeeded();
 		return parked;
+	}
+	
+	// Will scan ahead if vehicle requires multiple spots
+	// Returns index of spot(s) that are free and fit vehicle. -1 if none
+	private int getNextFreeSpotInRow(int rowIndex, Vehicle v)
+	{
+		ParkingSpot[] currentRow = rows.get(rowIndex);
+		for (int spot = 0; spot < currentRow.length; spot++)
+		{
+			if (currentRow[spot].spotFreeAndCanFitVehicle(v))
+			{
+				if (v.getParkingSpotsNeeded() == 1)
+				{
+					return spot;
+				}
+				
+				// If more than one spot, check all sequential spots
+				int checkedSpots = v.getParkingSpotsNeeded() - 1;
+				for (int moreSpots = spot + 1; moreSpots < currentRow.length && checkedSpots > 0; moreSpots++)
+				{	
+					if (currentRow[moreSpots].spotFreeAndCanFitVehicle(v))
+					{
+						checkedSpots--;
+					}
+					else
+					{
+						break;
+					}
+				}
+				if (checkedSpots == 0)
+				{
+					return spot;
+				}
+			}
+		}
+		
+		return -1;
 	}
 	
 	public void freeUpSpot()
