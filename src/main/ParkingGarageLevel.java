@@ -54,10 +54,14 @@ public class ParkingGarageLevel
 		
 		for (int row = 0; row < rows.size(); row++)
 		{
-			int spot;
-			if ((spot = getNextFreeSpotInRow(row, v)) != -1)
+			try
 			{
+				int spot = getNextFreeSpotInRow(row, v);
 				return parkVehicle(row, spot, v);
+			}
+			catch (NoFreeParkingSpotsException e) 
+			{
+				System.out.println(e);
 			}
 		}
 		
@@ -80,8 +84,9 @@ public class ParkingGarageLevel
 	}
 	
 	// Will scan ahead if vehicle requires multiple spots
-	// Returns index of spot(s) that are free and fit vehicle. -1 if none
-	private int getNextFreeSpotInRow(int rowIndex, Vehicle v)
+	// Returns index of spot(s) that are free and fit vehicle
+	// Will throw exception if now (continuous) spots found
+	private int getNextFreeSpotInRow(int rowIndex, Vehicle v) throws NoFreeParkingSpotsException
 	{
 		ParkingSpot[] currentRow = rows.get(rowIndex);
 		for (int spot = 0; spot < currentRow.length; spot++)
@@ -113,7 +118,7 @@ public class ParkingGarageLevel
 			}
 		}
 		
-		return -1;
+		throw new NoFreeParkingSpotsException("Cannot find enough free parking spots for vehicle in row " + (rowIndex + 1));
 	}
 	
 	public void freeUpSpot()
