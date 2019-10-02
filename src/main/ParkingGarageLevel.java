@@ -45,7 +45,7 @@ public class ParkingGarageLevel
 		return freeSpots;
 	}
 	
-	public boolean parkVehicle(Vehicle v)
+	public boolean parkVehicleOnLevel(Vehicle v)
 	{
 		if (getFreeSpotsOnLevel() < v.getParkingSpotsNeeded())
 		{
@@ -57,7 +57,7 @@ public class ParkingGarageLevel
 			try
 			{
 				int spot = getNextFreeSpotInRow(row, v);
-				return parkVehicle(row, spot, v);
+				return parkVehicleInSpots(row, spot, v);
 			}
 			catch (NoFreeParkingSpotsException e) 
 			{
@@ -69,7 +69,7 @@ public class ParkingGarageLevel
 	}
 	
 	//Will park in many spots
-	private boolean parkVehicle(int rowIndex, int spotIndex, Vehicle v)
+	private boolean parkVehicleInSpots(int rowIndex, int spotIndex, Vehicle v)
 	{
 		v.leaveParkingSpots();
 		boolean parked = true;
@@ -77,7 +77,7 @@ public class ParkingGarageLevel
 		for (int spot = spotIndex, spotsRemaining = v.getParkingSpotsNeeded();
 				spot < currentRow.length && spotsRemaining > 0; spot++, spotsRemaining--)
 		{
-			parked &= currentRow[spot].parkVehicle(v);
+			parked &= currentRow[spot].parkInSpot(v);
 		}
 		freeSpots -= v.getParkingSpotsNeeded();
 		return parked;

@@ -36,7 +36,7 @@ public abstract class Vehicle
 		return parkingSpotsNeeded;
 	}
 	
-	public void park(ParkingSpot ps)
+	public void parkVehicle(ParkingSpot ps)
 	{
 		parkingSpots.add(ps);
 	}

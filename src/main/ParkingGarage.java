@@ -19,7 +19,7 @@ public class ParkingGarage
 		exit = new ParkingGarageExitGate(this);
 	}
 	
-	public boolean parkVehicle(Vehicle v)
+	public boolean parkVehicleInGarage(Vehicle v)
 	{
 		if (getFreeSpots() == 0)
 		{
@@ -28,7 +28,7 @@ public class ParkingGarage
 		
 		for (int level = 0; level < levels.length; level++)
 		{
-			if (levels[level].parkVehicle(v))
+			if (levels[level].parkVehicleOnLevel(v))
 			{
 				entrance.getParkingTicketForVehicle(v);
 				return true;

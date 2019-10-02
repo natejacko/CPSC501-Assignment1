@@ -28,12 +28,12 @@ public class ParkingSpot
 		return isSpotFree() && v.canParkInSpot(this);
 	}
 	
-	public boolean parkVehicle(Vehicle v)
+	public boolean parkInSpot(Vehicle v)
 	{
 		if (spotFreeAndCanFitVehicle(v))
 		{
 			currentVehicle = v;
-			v.park(this);
+			v.parkVehicle(this);
 			return true;
 		}
 		return false;

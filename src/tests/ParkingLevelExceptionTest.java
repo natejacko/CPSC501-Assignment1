@@ -19,12 +19,12 @@ public class ParkingLevelExceptionTest
 		Vehicle nc4 = new NormalCar("nc3");
 		Vehicle b = new Bus("b", 3);
 		
-		assertTrue(p.parkVehicle(nc1));
-		assertTrue(p.parkVehicle(nc2));
-		assertTrue(p.parkVehicle(nc3));
-		assertTrue(p.parkVehicle(nc4));
+		assertTrue(p.parkVehicleInGarage(nc1));
+		assertTrue(p.parkVehicleInGarage(nc2));
+		assertTrue(p.parkVehicleInGarage(nc3));
+		assertTrue(p.parkVehicleInGarage(nc4));
 		assertTrue(p.removeVehicleFromGarage(nc2));
-		assertFalse(p.parkVehicle(b));
+		assertFalse(p.parkVehicleInGarage(b));
 	}
 
 }
