@@ -3,6 +3,7 @@ public class CompactCar extends Vehicle
 {
 	public CompactCar(String licensePlate)
 	{
+		this.parkingSpotsNeeded = 1;
 		this.licensePlate = licensePlate;
 		this.size = ParkingSpotSize.COMPACT;
 	}

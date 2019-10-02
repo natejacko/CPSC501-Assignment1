@@ -4,6 +4,7 @@ public class Motorbike extends Vehicle
 {
 	public Motorbike(String licensePlate)
 	{
+		this.parkingSpotsNeeded = 1;
 		this.licensePlate = licensePlate;
 		this.size = ParkingSpotSize.MOTORBIKE;
 	}

@@ -3,6 +3,7 @@ public class NormalCar extends Vehicle
 {
 	public NormalCar(String licensePlate)
 	{
+		this.parkingSpotsNeeded = 1;
 		this.licensePlate = licensePlate;
 		this.size = ParkingSpotSize.NORMAL;
 	}

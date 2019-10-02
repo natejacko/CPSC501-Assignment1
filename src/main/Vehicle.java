@@ -7,6 +7,7 @@ public abstract class Vehicle
 	protected String licensePlate;
 	protected ParkingSpotSize size;
 	protected ParkingTicket parkingTicket;
+	protected int parkingSpotsNeeded;
 	
 	public ParkingSpotSize getParkingSpotSize()
 	{
@@ -28,6 +29,11 @@ public abstract class Vehicle
 		// Payment outside the scope of this code. Assume payment always is completed
 		this.parkingTicket = null;
 		return true;
+	}
+	
+	public int getParkingSpotsNeeded()
+	{
+		return parkingSpotsNeeded;
 	}
 	
 	public void park(ParkingSpot ps)
