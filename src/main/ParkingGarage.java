@@ -54,21 +54,7 @@ public class ParkingGarage
 	
 	public boolean parkBus(Bus b)
 	{
-		if (getFreeSpots() == 0)
-		{
-			return false;
-		}
-		
-		for (int level = 0; level < levels.length; level++)
-		{
-			if (levels[level].parkBus(b))
-			{
-				entrance.getParkingTicketForBus(b);
-				return true;
-			}
-		}
-		
-		return false;
+		return parkVehicle(b);
 	}
 	
 	public double getParkingRatePerHalfHour()
