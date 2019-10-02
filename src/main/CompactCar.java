@@ -1,9 +1,10 @@
 package main;
-public class CompactCar extends Vehicle
+
+public class CompactCar extends Car
 {
 	public CompactCar(String licensePlate)
 	{
-		this.parkingSpotsNeeded = 1;
+		super();
 		this.licensePlate = licensePlate;
 		this.size = ParkingSpotSize.COMPACT;
 	}
