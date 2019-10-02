@@ -3,7 +3,6 @@ package main;
 public class ParkingSpot 
 {
 	private Vehicle currentVehicle;
-	private Bus currentBus;
 	private ParkingSpotSize size;
 	private ParkingGarageLevel level;
 	
@@ -21,7 +20,7 @@ public class ParkingSpot
 	
 	public boolean isSpotFree()
 	{
-		return currentVehicle == null && currentBus == null;
+		return currentVehicle == null;
 	}
 	
 	public boolean spotFreeAndCanFitVehicle(Vehicle v)
@@ -31,7 +30,7 @@ public class ParkingSpot
 	
 	public boolean spotFreeAndCanFitBus(Bus b)
 	{
-		return isSpotFree() && b.canParkInSpot(this);
+		return spotFreeAndCanFitVehicle(b);
 	}
 	
 	public boolean parkVehicle(Vehicle v)
@@ -47,19 +46,12 @@ public class ParkingSpot
 	
 	public boolean parkBus(Bus b)
 	{
-		if (spotFreeAndCanFitBus(b))
-		{
-			currentBus = b;
-			b.park(this);
-			return true;
-		}
-		return false;
+		return parkVehicle(b);
 	}
 	
 	public void freeUpSpot()
 	{
 		level.freeUpSpot();
 		currentVehicle = null;
-		currentBus = null;
 	}
 }
