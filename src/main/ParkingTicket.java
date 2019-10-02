@@ -1,4 +1,5 @@
 package main;
+
 import java.time.Instant;
 
 public class ParkingTicket 
@@ -7,12 +8,25 @@ public class ParkingTicket
 	
 	public ParkingTicket()
 	{
-		startTime = Instant.now().toEpochMilli();
+		startTime = getCurrentTimeMilli();
 	}
 	
 	// returns in minutes
 	public long getElapsedTicketTime()
-	{	
-		return (Instant.now().getEpochSecond() - startTime) / 1000;
+	{
+		long endTime = getCurrentTimeMilli();
+		long elapsedTimeMinutes = convertMilliToMinutes(endTime) - convertMilliToMinutes(startTime);
+		return elapsedTimeMinutes;
+	}
+	
+	private long getCurrentTimeMilli()
+	{
+		return Instant.now().toEpochMilli();
+	}
+	
+	private long convertMilliToMinutes(long milli)
+	{
+		long seconds = milli / 1000;
+		return seconds / 60;
 	}
 }
