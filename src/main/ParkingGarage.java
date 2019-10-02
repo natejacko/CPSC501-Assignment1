@@ -45,18 +45,6 @@ public class ParkingGarage
 		return v.payParkingTicket(ticketPrice);
 	}
 	
-	public boolean removeBusFromGarage(Bus b)
-	{
-		b.leaveParkingSpots();
-		double ticketPrice = exit.getParkingTicketPrice(b.getParkingTicket());
-		return b.payParkingTicket(ticketPrice);
-	}
-	
-	public boolean parkBus(Bus b)
-	{
-		return parkVehicle(b);
-	}
-	
 	public double getParkingRatePerHalfHour()
 	{
 		return parkingRatePerHalfHour;

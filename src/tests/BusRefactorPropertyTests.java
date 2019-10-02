@@ -11,7 +11,7 @@ public class BusRefactorPropertyTests
 	@Test
 	public void testBusSize() 
 	{
-		Bus b = new Bus("b", 6);
+		Vehicle b = new Bus("b", 6);
 		ParkingSpotSize expected = ParkingSpotSize.NORMAL;
 		ParkingSpotSize actual = b.getParkingSpotSize();
 		
@@ -22,7 +22,7 @@ public class BusRefactorPropertyTests
 	public void testBusParkingSpotsNeeded()
 	{
 		int expected = 6;
-		Bus b = new Bus("b", expected);
+		Vehicle b = new Bus("b", expected);
 		int actual = b.getParkingSpotsNeeded();
 		
 		assertEquals(expected, actual);

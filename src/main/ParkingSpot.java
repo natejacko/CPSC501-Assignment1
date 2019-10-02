@@ -28,11 +28,6 @@ public class ParkingSpot
 		return isSpotFree() && v.canParkInSpot(this);
 	}
 	
-	public boolean spotFreeAndCanFitBus(Bus b)
-	{
-		return spotFreeAndCanFitVehicle(b);
-	}
-	
 	public boolean parkVehicle(Vehicle v)
 	{
 		if (spotFreeAndCanFitVehicle(v))
@@ -42,11 +37,6 @@ public class ParkingSpot
 			return true;
 		}
 		return false;
-	}
-	
-	public boolean parkBus(Bus b)
-	{
-		return parkVehicle(b);
 	}
 	
 	public void freeUpSpot()

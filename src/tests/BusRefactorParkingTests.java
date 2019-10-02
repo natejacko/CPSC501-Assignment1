@@ -16,19 +16,11 @@ public class BusRefactorParkingTests
 	}
 	
 	@Test
-	public void testNormalBusParking() 
-	{	
-		Bus b = new Bus("b", 6);
-		
-		assertTrue(p.parkBus(b));
-	}
-	
-	@Test
-	public void testVehicleBusParking() 
+	public void testBusParking() 
 	{	
 		Vehicle b = new Bus("b", 6);
 		
-		assertTrue(p.parkBus((Bus)b));
+		assertTrue(p.parkVehicle(b));
 	}
 
 	@Test
@@ -48,17 +40,17 @@ public class BusRefactorParkingTests
 	{
 		Vehicle b = new Bus("b", 7);
 		
-		assertFalse(p.parkBus((Bus)b));
+		assertFalse(p.parkVehicle((Bus)b));
 	}
 	
 	@Test
 	public void testFillNormalSpotsWithBuses()
 	{
-		Bus b1 = new Bus("b1", 6);
-		Bus b2 = new Bus("b2", 6);
+		Vehicle b1 = new Bus("b1", 6);
+		Vehicle b2 = new Bus("b2", 6);
 		
-		assertTrue(p.parkBus(b1));
-		assertFalse(p.parkBus(b2));
+		assertTrue(p.parkVehicle(b1));
+		assertFalse(p.parkVehicle(b2));
 	}
 	
 	@Test
@@ -68,15 +60,15 @@ public class BusRefactorParkingTests
 		Vehicle nc2 = new NormalCar("nc2");
 		Vehicle nc3 = new NormalCar("nc3");
 		Vehicle nc4 = new NormalCar("nc4");
-		Bus b1 = new Bus("b1", 3);
-		Bus b2 = new Bus("b2", 3);
+		Vehicle b1 = new Bus("b1", 3);
+		Vehicle b2 = new Bus("b2", 3);
 		
 		assertTrue(p.parkVehicle(nc1));
 		assertTrue(p.parkVehicle(nc2));
 		assertTrue(p.parkVehicle(nc3));
-		assertTrue(p.parkBus(b1));
+		assertTrue(p.parkVehicle(b1));
 		assertFalse(p.parkVehicle(nc4));
-		assertFalse(p.parkBus(b2));
+		assertFalse(p.parkVehicle(b2));
 		
 		Vehicle cc1 = new CompactCar("cc1");
 		Vehicle cc2 = new CompactCar("cc2");
@@ -102,11 +94,11 @@ public class BusRefactorParkingTests
 	@Test
 	public void testParkAndRemoveBus()
 	{
-		Bus b1 = new Bus("b1", 6);
-		Bus b2 = new Bus("b2", 6);
+		Vehicle b1 = new Bus("b1", 6);
+		Vehicle b2 = new Bus("b2", 6);
 		
-		assertTrue(p.parkBus(b1));
-		assertTrue(p.removeBusFromGarage(b1));
-		assertTrue(p.parkBus(b2));
+		assertTrue(p.parkVehicle(b1));
+		assertTrue(p.removeVehicleFromGarage(b1));
+		assertTrue(p.parkVehicle(b2));
 	}
 }

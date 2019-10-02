@@ -11,10 +11,4 @@ public class ParkingGarageEntranceGate extends ParkingGarageGate
 		ParkingTicket newTicket = new ParkingTicket();
 		v.receiveParkingTicket(newTicket);
 	}
-	
-	public void getParkingTicketForBus(Bus b)
-	{
-		ParkingTicket newTicket = new ParkingTicket();
-		b.receiveParkingTicket(newTicket);
-	}
 }
